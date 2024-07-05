@@ -8,10 +8,8 @@ from indigo.indigo.indigo import Indigo
 
 from pqdm.processes import pqdm
 
-from atom_to_atom_mapping.utility.abstract_base.abstract_base import AbstractBaseAtomToAtomMappingUtility
 
-
-class IndigoAtomToAtomMappingUtility(AbstractBaseAtomToAtomMappingUtility):
+class IndigoAtomToAtomMappingUtility:
     """
     The `Indigo <https://github.com/epam/Indigo>`_ chemical reaction compound atom-to-atom mapping utility class.
     """
@@ -19,22 +17,22 @@ class IndigoAtomToAtomMappingUtility(AbstractBaseAtomToAtomMappingUtility):
     @staticmethod
     def map_reaction_smiles(
             reaction_smiles: str,
-            timeout_period_in_milliseconds: int = 10000,
-            handle_existing_atom_to_atom_mapping: str = "discard",
+            timeout_period: int = 10000,
+            handle_existing_atom_map_numbers: str = "discard",
             ignore_atom_charges: bool = False,
             ignore_atom_isotopes: bool = False,
             ignore_atom_valences: bool = False,
             ignore_atom_radicals: bool = False,
             canonicalize_reaction_smiles: bool = False,
             logger: Optional[Logger] = None
-    ) -> Optional[Dict[str, Union[None, bool, str]]]:
+    ) -> Optional[Dict[str, Union[None, int, str]]]:
         """
         Map a chemical reaction `SMILES` string.
 
         :parameter reaction_smiles: The chemical reaction `SMILES` string.
-        :parameter timeout_period_in_milliseconds: The timeout period in milliseconds.
-        :parameter handle_existing_atom_to_atom_mapping: The indicator of how the existing chemical reaction compound
-            atom-to-atom mapping should be handled. The value choices are: { `alter`, `clear`, `discard`, `keep` }.
+        :parameter timeout_period: The timeout period in milliseconds.
+        :parameter handle_existing_atom_map_numbers: The indicator of how the existing chemical reaction compound atom
+            map numbers should be handled. The value choices are: { `alter`, `clear`, `discard`, `keep` }.
         :parameter ignore_atom_charges: The indicator of whether the chemical reaction compound atom charges should be
             ignored.
         :parameter ignore_atom_isotopes: The indicator of whether the chemical reaction compound atom isotopes should be
@@ -51,21 +49,21 @@ class IndigoAtomToAtomMappingUtility(AbstractBaseAtomToAtomMappingUtility):
         """
 
         try:
-            epam_indigo = Indigo()
+            indigo = Indigo()
 
-            epam_indigo.setOption(
+            indigo.setOption(
                 option="aam-timeout",
-                value1=timeout_period_in_milliseconds
+                value1=timeout_period
             )
 
-            epam_indigo_reaction = epam_indigo.loadReactionSmarts(
+            indigo_reaction = indigo.loadReactionSmarts(
                 string=reaction_smiles
             )
 
-            epam_indigo_status_code = epam_indigo_reaction.automap(
+            indigo_status_code = indigo_reaction.automap(
                 mode="".join([
-                    handle_existing_atom_to_atom_mapping
-                    if handle_existing_atom_to_atom_mapping in [
+                    handle_existing_atom_map_numbers
+                    if handle_existing_atom_map_numbers in [
                         "alter",
                         "clear",
                         "discard",
@@ -80,10 +78,9 @@ class IndigoAtomToAtomMappingUtility(AbstractBaseAtomToAtomMappingUtility):
 
             return {
                 "mapped_reaction_smiles": (
-                    epam_indigo_reaction.canonicalSmiles()
-                    if canonicalize_reaction_smiles else epam_indigo_reaction.smiles()
+                    indigo_reaction.canonicalSmiles() if canonicalize_reaction_smiles else indigo_reaction.smiles()
                 ),
-                "completed_without_errors": True if epam_indigo_status_code == 1 else False,
+                "status_code": indigo_status_code,
             }
 
         except Exception as exception_handle:
@@ -97,16 +94,16 @@ class IndigoAtomToAtomMappingUtility(AbstractBaseAtomToAtomMappingUtility):
     @staticmethod
     def map_reaction_smiles_strings(
             reaction_smiles_strings: Sequence[str],
-            number_of_jobs: int = 1,
+            number_of_processes: int = 1,
             **kwargs
     ) -> Optional[List[Optional[Dict[str, Union[None, bool, str]]]]]:
         """
         Map the chemical reaction `SMILES` strings.
 
         :parameter reaction_smiles_strings: The chemical reaction `SMILES` strings.
-        :parameter number_of_jobs: The number of jobs.
-        :parameter kwargs: The keyword arguments for the adjustment of the following underlying methods: {
-            `atom_to_atom_mapping.utility.epam.indigo.IndigoAtomToAtomMappingUtility.map_reaction_smiles` }.
+        :parameter number_of_processes: The number of processes.
+        :parameter kwargs: The keyword arguments for the adjustment of the following underlying methods:
+            { `IndigoAtomToAtomMappingUtility.map_reaction_smiles` }.
 
         :returns: The outputs of the chemical reaction compound atom-to-atom mapping.
         """
@@ -117,10 +114,10 @@ class IndigoAtomToAtomMappingUtility(AbstractBaseAtomToAtomMappingUtility):
                 IndigoAtomToAtomMappingUtility.map_reaction_smiles,
                 **kwargs
             ),
-            n_jobs=number_of_jobs,
-            desc="Mapping the chemical reaction SMILES strings (Number of Jobs: {number_of_jobs:d})".format(
-                number_of_jobs=number_of_jobs
+            n_jobs=number_of_processes,
+            desc="Mapping the chemical reaction SMILES strings (Number of Processes: {number_of_processes:d})".format(
+                number_of_processes=number_of_processes
             ),
             total=len(reaction_smiles_strings),
-            ncols=200
+            ncols=150
         )

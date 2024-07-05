@@ -1,18 +1,18 @@
-""" The ``atom_to_atom_mapping.utility.chytorch`` package ``rxnmap`` module. """
-
-import chython
+""" The ``atom_to_atom_mapping.utility.cimm_kfu`` package ``chytorch_rxnmap`` module. """
 
 from functools import partial
 from logging import Logger
 from typing import Dict, List, Optional, Sequence, Union
 
+from chython.files.daylight.smiles import smiles
+
 from pqdm.processes import pqdm
 
 
-class RxnMapAtomToAtomMappingUtility:
+class ChytorchRxnMapAtomToAtomMappingUtility:
     """
-    The `RxnMap <https://github.com/chython/chytorch-rxnmap>`_ chemical reaction compound atom-to-atom mapping utility
-    class.
+    The `Chytorch RxnMap <https://github.com/chython/chytorch-rxnmap>`_ chemical reaction compound atom-to-atom mapping
+    utility class.
     """
 
     @staticmethod
@@ -33,7 +33,7 @@ class RxnMapAtomToAtomMappingUtility:
         """
 
         try:
-            chytorch_rxnmap_reaction = chython.smiles(
+            chython_reaction = smiles(
                 reaction_smiles,
                 ignore=kwargs.pop("ignore", True),
                 remap=kwargs.pop("remap", False),
@@ -46,15 +46,15 @@ class RxnMapAtomToAtomMappingUtility:
 
             kwargs.pop("return_score", None)
 
-            chytorch_rxnmap_score = chytorch_rxnmap_reaction.reset_mapping(
+            chytorch_rxnmap_confidence_score = chython_reaction.reset_mapping(
                 return_score=True,
                 multiplier=kwargs.pop("multiplier", 1.75),
                 keep_reactants_numbering=kwargs.pop("keep_reactants_numbering", False)
             )
 
             return {
-                "mapped_reaction_smiles": format(chytorch_rxnmap_reaction, "m"),
-                "confidence_score": chytorch_rxnmap_score,
+                "mapped_reaction_smiles": format(chython_reaction, "m"),
+                "confidence_score": chytorch_rxnmap_confidence_score,
             }
 
         except Exception as exception_handle:
@@ -68,41 +68,30 @@ class RxnMapAtomToAtomMappingUtility:
     @staticmethod
     def map_reaction_smiles_strings(
             reaction_smiles_strings: Sequence[str],
-            number_of_jobs: int = 1,
-            torch_device: Optional[str] = None,
+            number_of_processes: int = 1,
             **kwargs
     ) -> Optional[List[Optional[Dict[str, Union[float, str]]]]]:
         """
         Map the chemical reaction `SMILES` strings.
 
         :parameter reaction_smiles_strings: The chemical reaction `SMILES` strings.
-        :parameter number_of_jobs: The number of jobs.
-        :parameter torch_device: The indicator of the `PyTorch` device. The value `None` indicates that the default
-            `PyTorch` device should be utilized.
+        :parameter number_of_processes: The number of processes.
         :parameter kwargs: The keyword arguments for the adjustment of the following underlying methods:
-            { `atom_to_atom_mapping.utility.chytorch.rxnmap.RxnMapAtomToAtomMappingUtility.map_reaction_smiles` }.
+            { `ChytorchRxnMapAtomToAtomMappingUtility.map_reaction_smiles` }.
 
         :returns: The outputs of the chemical reaction compound atom-to-atom mapping.
         """
 
-        chython.pickle_cache = True
-
-        if torch_device is not None:
-            chython.torch_device = torch_device
-
         return pqdm(
             array=reaction_smiles_strings,
             function=partial(
-                RxnMapAtomToAtomMappingUtility.map_reaction_smiles,
+                ChytorchRxnMapAtomToAtomMappingUtility.map_reaction_smiles,
                 **kwargs
             ),
-            n_jobs=number_of_jobs,
-            desc="Mapping the chemical reaction SMILES strings ({parameters:s})".format(
-                parameters="PyTorch Device: '{torch_device:s}', Number of Jobs: {number_of_jobs:d}".format(
-                    torch_device=chython.torch_device,
-                    number_of_jobs=number_of_jobs
-                )
+            n_jobs=number_of_processes,
+            desc="Mapping the chemical reaction SMILES strings (Number of Processes: {number_of_processes:d})".format(
+                number_of_processes=number_of_processes
             ),
             total=len(reaction_smiles_strings),
-            ncols=200
+            ncols=150
         )
