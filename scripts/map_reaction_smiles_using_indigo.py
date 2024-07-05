@@ -184,7 +184,7 @@ if __name__ == "__main__":
         ):
             input_csv_file_data = read_csv(
                 filepath_or_buffer=script_arguments.input_csv_file_path
-            )[0:100]
+            )
 
             concat(
                 objs=[
