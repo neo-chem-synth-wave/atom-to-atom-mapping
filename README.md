@@ -7,8 +7,8 @@ A chemical reaction can be defined as the transformation of a set of chemical co
 energy change, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds.
 Therefore, correctly mapping this rearrangement of chemical compound atoms is essential for capturing the nature of the
 chemical reaction. This atom-to-atom mapping or atom mapping task has proven challenging as it is a generalization of
-the subgraph isomorphism problem. The main objective of the Atom-to-atom Mapping project is to systematically curate and
-facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
+the subgraph isomorphism problem. The main objective of the **Atom-to-atom Mapping** project is to systematically curate
+and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
 
 
 ## Installation
