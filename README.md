@@ -3,12 +3,13 @@
 ![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)
 ![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)
 
-A chemical reaction can be defined as the transformation of a set of chemical compounds into another. Accompanied by
-energy change, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds.
-Therefore, correctly mapping this rearrangement of chemical compound atoms is essential for capturing the nature of the
-chemical reaction. This atom-to-atom mapping or atom mapping task has proven challenging as it is a generalization of
-the subgraph isomorphism problem. The main objective of the **Atom-to-atom Mapping** project is to systematically curate
-and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
+A **chemical reaction** can be defined as the transformation of a set of chemical compounds into another. Accompanied by
+energy change, the atoms of the **reactant chemical compounds** are rearranged to form the**product chemical
+compounds**. Therefore, correctly mapping this rearrangement of chemical compound atoms is essential for capturing the
+nature of the chemical reaction. This atom-to-atom mapping or atom mapping task has proven challenging as it is a
+generalization of the well-known **subgraph isomorphism problem**. The main objective of the **Atom-to-atom Mapping**
+project is to systematically curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping
+research resources.
 
 
 ## Installation
@@ -33,9 +34,9 @@ pip install --no-build-isolation -e .
 
 
 ## Utilization
-The purpose of the **scripts** directory is primarily to illustrate how to utilize the **atom_to_atom_mapping** package.
-Regardless, the individual scripts can be utilized to run atom-to-atom-mapping on reaction SMILES strings using the
-following libraries:
+The purpose of the [scripts](/scripts) directory is primarily to illustrate how to utilize the
+[atom_to_atom_mapping](/atom_to_atom_mapping) package. Regardless, the individual scripts can be utilized to run
+atom-to-atom-mapping on reaction SMILES strings using the following libraries:
 
 1. [Indigo](https://github.com/epam/Indigo) by [EPAM](https://github.com/epam)
 2. [RXNMapper](https://github.com/rxn4chemistry/rxnmapper) by [IBM RXN for Chemistry](https://github.com/rxn4chemistry)
@@ -84,7 +85,7 @@ python scripts/map_reaction_smiles_using_chytorch_rxnmap.py \
   --input_csv_file_path "data/uspto_50k_by_20171116_coley_c_w_et_al.csv" \
   --reaction_smiles_column_name "rxn_smiles" \
   --output_csv_file_path "data/uspto_50k_by_20171116_coley_c_w_et_al_chytorch_rxnmap.csv" \
-  --number_of_processes 5
+  --number_of_processes 1
 ```
 
 ### LocalMapper
@@ -109,7 +110,7 @@ for more details regarding the license information of external resources utilize
 
 ## Contact
 If you are interested in contributing to this repository by reporting bugs, suggesting improvements, or submitting
-feedback, feel free to use [GitHub Issues](https://github.com/neo-chem-synth-wave/ncsw-chemistry/issues).
+feedback, feel free to use [GitHub Issues](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/issues).
 
 
 ## References
@@ -118,12 +119,11 @@ https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: July 1st
 
 **[[2]](/references/20210407_schwaller_p_et_al.md)** Schwaller, P., Hoover, B., Reymond, J., Strobelt, H., and Laino, T.
 **Extraction of Organic Chemistry Grammar from Unsupervised Learning of Chemical Reactions**. _Sci. Adv., 7, 15,
-eabe4166, 2021_. DOI: https://doi.org/10.1126/sciadv.abe4166.
+eabe4166, 2021_.
 
 **[[3]](/references/20220706_nugmanov_r_et_al.md)** Nugmanov, R., Dyubankova, N., Gedich, A., and Wegner, J.K.
 **Bidirectional Graphormer for Reactivity Understanding: Neural Network Trained to Reaction Atom-to-atom Mapping Task**.
-_J. Chem. Inf. Model., 2022, 62, 14, 3307–3315_. DOI: https://doi.org/10.1021/acs.jcim.2c00344.
+_J. Chem. Inf. Model., 2022, 62, 14, 3307–3315_.
 
 **[[4]](/references/20240313_chen_s_et_al.md)** Chen, S., An, S., Babazade. R., and Jung, Y. **Precise Atom-to-atom
 Mapping for Organic Reactions via Human-in-the-loop Machine Learning**.  _Nat. Commun., 15, 2250, 2024_.
-DOI: https://doi.org/10.1038/s41467-024-46364-y.
