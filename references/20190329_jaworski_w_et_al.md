@@ -23,12 +23,12 @@ of reaction rules underlying modern synthesis-planning programs.
 
 # Citation
 ```
-@article{
-    Jaworski2019,
+@article{Jaworski2019,
     author = {Wojciech Jaworski, Sara Szymkuć, Barbara Mikulak-Klucznik, Krzysztof Piecuch, Tomasz Klucznik, Michał Kaźmierowski, Jan Rydzewski, Anna Gambin and Bartosz A. Grzybowski},
     title = {Automatic Mapping of Atoms Across Both Simple and Complex Chemical Reactions},
     journal = {Nature Communications},
     volume = {10},
+    issue = {1},
     pages = {1434},
     year = {2019},
     doi = {https://doi.org/10.1038/s41467-019-09440-2}
