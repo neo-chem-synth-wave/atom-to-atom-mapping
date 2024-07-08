@@ -1,5 +1,5 @@
 # Atom-to-atom Mapping
-![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-v.2024.07.1-%23FFE05D?logo=github&style=flat)
+![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-v.2024.7.1-%23FFE05D?logo=github&style=flat)
 ![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)
 ![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)
 
