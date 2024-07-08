@@ -5,7 +5,7 @@ from logging import Formatter, Logger, StreamHandler, getLogger
 
 from pandas import DataFrame, concat, read_csv
 
-from atom_to_atom_mapping.utility.micc_snu import LocalMapperAtomToAtomMappingUtility
+from atom_to_atom_mapping.utility import LocalMapperAtomToAtomMappingUtility
 
 
 def get_script_arguments() -> Namespace:

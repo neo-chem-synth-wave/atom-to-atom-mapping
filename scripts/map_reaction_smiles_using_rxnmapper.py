@@ -5,7 +5,7 @@ from logging import Formatter, Logger, StreamHandler, getLogger
 
 from pandas import DataFrame, concat, read_csv
 
-from atom_to_atom_mapping.utility.ibm_rxn4chemistry import RXNMapperAtomToAtomMappingUtility
+from atom_to_atom_mapping.utility import RXNMapperAtomToAtomMappingUtility
 
 
 def get_script_arguments() -> Namespace:

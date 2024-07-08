@@ -1,4 +1,4 @@
-name: atom-to-atom-mapping
+name: atom-to-atom-mapping-env
 
 channels:
   - conda-forge
