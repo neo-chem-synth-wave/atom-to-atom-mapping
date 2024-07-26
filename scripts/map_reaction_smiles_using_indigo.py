@@ -125,22 +125,22 @@ def get_script_logger() -> Logger:
     """
 
     logger = getLogger(
-        name=__name__
+        name="script_logger"
     )
 
     logger.setLevel(
-        level="INFO"
+        level="DEBUG"
     )
 
     formatter = Formatter(
-        fmt="[{asctime:s}] {levelname:s}: \"{message:s}\"",
+        fmt="[{name:s} @ {asctime:s}] {levelname:s}: \"{message:s}\"",
         style="{"
     )
 
     stream_handler = StreamHandler()
 
     stream_handler.setLevel(
-        level="INFO"
+        level="DEBUG"
     )
 
     stream_handler.setFormatter(
@@ -212,7 +212,5 @@ if __name__ == "__main__":
                 index=False
             )
 
-    except Exception as exception_handle:
-        script_logger.exception(
-            msg=exception_handle
-        )
+    except:
+        raise
