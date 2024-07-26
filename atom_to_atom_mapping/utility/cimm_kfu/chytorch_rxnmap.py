@@ -59,8 +59,9 @@ class ChytorchRxnMapAtomToAtomMappingUtility:
 
         except Exception as exception_handle:
             if logger is not None:
-                logger.exception(
-                    msg=exception_handle
+                logger.debug(
+                    msg=exception_handle,
+                    exc_info=True
                 )
 
             return None
