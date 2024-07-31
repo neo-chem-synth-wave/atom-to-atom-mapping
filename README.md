@@ -2,13 +2,14 @@
 ![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)
 ![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)
 
+Welcome to the chemical reaction compound atom-to-atom mapping project !!!
+
 A chemical reaction can be defined as the transformation of a set of chemical compounds into another. Accompanied by
 energy change, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds.
 Therefore, correctly mapping this rearrangement of chemical compound atoms is essential for capturing the nature of the
 chemical reaction. This atom-to-atom mapping or atom mapping task has proven challenging as it is a generalization of
-the well-known subgraph isomorphism problem. Consequently, the main objective of the **Atom-to-atom Mapping** project is
-to systematically curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping research
-resources.
+the well-known subgraph isomorphism problem. Consequently, the main objective of this project is to systematically
+curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping research resources.
 
 
 ## Installation
