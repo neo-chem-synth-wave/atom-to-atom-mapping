@@ -2,7 +2,7 @@
 **Title:** Precise Atom-to-atom Mapping for Organic Reactions via Human-in-the-loop Machine Learning<br>
 **Authors:** Shuan Chen, Sunggi An, Ramil Babazade, Yousung Jung<br>
 **Publication Date:** 2024/03/13<br>
-**Publication Links:** [Nature Communications](https://www.nature.com/articles/s41467-024-46364-y)<br>
+**Publication Link:** [Nature Communications](https://www.nature.com/articles/s41467-024-46364-y)<br>
 **Alternative Publication Links:** [PubMed Central](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10937625) |
 [ResearchGate](https://www.researchgate.net/publication/378939425_Precise_atom-to-atom_mapping_for_organic_reactions_via_human-in-the-loop_machine_learning)
 

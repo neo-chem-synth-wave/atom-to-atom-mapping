@@ -1,8 +1,8 @@
-""" The ``atom_to_atom_mapping.utility.cimm_kfu`` package ``chytorch_rxnmap`` module. """
+""" The ``atom_to_atom_mapping.utility`` package ``chytorch_rxnmap`` module. """
 
 from functools import partial
 from logging import Logger
-from typing import Dict, List, Optional, Sequence, Union
+from typing import Collection, Dict, List, Optional, Union
 
 from chython.files.daylight.smiles import smiles
 
@@ -16,20 +16,20 @@ class ChytorchRxnMapAtomToAtomMappingUtility:
     """
 
     @staticmethod
-    def map_reaction_smiles(
+    def map_reaction(
             reaction_smiles: str,
             logger: Optional[Logger] = None,
             **kwargs
-    ) -> Optional[Dict[str, Union[float, str]]]:
+    ) -> Dict[str, Optional[Union[float, str]]]:
         """
-        Map a chemical reaction `SMILES` string.
+        Map a chemical reaction.
 
-        :parameter reaction_smiles: The chemical reaction `SMILES` string.
+        :parameter reaction_smiles: The SMILES string of the chemical reaction.
         :parameter logger: The logger. The value `None` indicates that the logger should not be utilized.
         :parameter kwargs: The keyword arguments for the adjustment of the following underlying functions and methods:
-            { `chython.algorithms.mapping.attention.Attention.reset_mapping`, `chython.files.daylight.smiles.smiles` }.
+            { `chython.files.daylight.smiles.smiles`, `chython.algorithms.mapping.attention.Attention.reset_mapping` }.
 
-        :returns: The output of the chemical reaction compound atom-to-atom mapping.
+        :returns: The mapped chemical reaction and confidence score.
         """
 
         try:
@@ -59,40 +59,45 @@ class ChytorchRxnMapAtomToAtomMappingUtility:
 
         except Exception as exception_handle:
             if logger is not None:
-                logger.debug(
+                logger.error(
                     msg=exception_handle,
                     exc_info=True
                 )
 
-            return None
+            return {
+                "mapped_reaction_smiles": None,
+                "confidence_score": None,
+            }
 
     @staticmethod
-    def map_reaction_smiles_strings(
-            reaction_smiles_strings: Sequence[str],
+    def map_reactions(
+            reaction_smiles_strings: Collection[str],
             number_of_processes: int = 1,
             **kwargs
-    ) -> Optional[List[Optional[Dict[str, Union[float, str]]]]]:
+    ) -> List[Dict[str, Optional[Union[float, str]]]]:
         """
-        Map the chemical reaction `SMILES` strings.
+        Map the chemical reactions.
 
-        :parameter reaction_smiles_strings: The chemical reaction `SMILES` strings.
+        :parameter reaction_smiles_strings: The SMILES strings of the chemical reactions.
         :parameter number_of_processes: The number of processes.
         :parameter kwargs: The keyword arguments for the adjustment of the following underlying methods:
-            { `ChytorchRxnMapAtomToAtomMappingUtility.map_reaction_smiles` }.
+            { `atom_to_atom_mapping.utility.chytorch_rxnmap.ChytorchRxnMapAtomToAtomMappingUtility.map_reaction` }.
 
-        :returns: The outputs of the chemical reaction compound atom-to-atom mapping.
+        :returns: The mapped chemical reactions and confidence scores.
         """
+
+        pqdm_description = "Mapping the chemical reactions (Number of Processes: {number_of_processes:d})".format(
+            number_of_processes=number_of_processes
+        )
 
         return pqdm(
             array=reaction_smiles_strings,
             function=partial(
-                ChytorchRxnMapAtomToAtomMappingUtility.map_reaction_smiles,
+                ChytorchRxnMapAtomToAtomMappingUtility.map_reaction,
                 **kwargs
             ),
             n_jobs=number_of_processes,
-            desc="Mapping the chemical reaction SMILES strings (Number of Processes: {number_of_processes:d})".format(
-                number_of_processes=number_of_processes
-            ),
+            desc=pqdm_description,
             total=len(reaction_smiles_strings),
-            ncols=150
+            ncols=len(pqdm_description) + (50 if number_of_processes == 1 else 75)
         )

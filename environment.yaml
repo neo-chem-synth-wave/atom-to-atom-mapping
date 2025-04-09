@@ -4,16 +4,15 @@ channels:
   - conda-forge
 
 dependencies:
-  - importlib_resources
   - pip
   - python=3.8
   - rdkit
   - tqdm
   - pip:
-      - chython
-      - chytorch
-      - chytorch-rxnmap
-      - epam.indigo
-      - localmapper
-      - pqdm
-      - rxnmapper
+    - chython
+    - chytorch
+    - chytorch-rxnmap
+    - epam.indigo
+    - localmapper
+    - pqdm
+    - rxnmapper
