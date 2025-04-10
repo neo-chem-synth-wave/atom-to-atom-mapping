@@ -37,6 +37,7 @@ libraries may arise during the creation of the standalone environment. The
 
 ```shell
 # Re-install the DGL library for PyTorch and CUDA library versions 2.4 and 12.1, respectively.
+
 pip uninstall dgl
 
 pip install dgl -f https://data.dgl.ai/wheels/torch-2.4/cu121/repo.html
@@ -63,14 +64,18 @@ mapping using the following approaches:
 The [map_reactions](/scripts/map_reactions.py) script can be utilized as follows:
 
 ```shell
-# Use Case #1: Map a chemical reaction using the Indigo atom-to-atom mapping approach.
-python scripts/map_reactions.py \
-  --atom-to-atom-mapping-approach "indigo" \
-  --reaction_smiles "[O-][N+](=O)c1ccc(Br)cn1.CC(=O)Nc1ccc(O)cc1>>CC(=O)Nc1ccc(Oc2ccc(nc2)[N+]([O-])=O)cc1"
+# Map a chemical reaction using the Indigo atom-to-atom mapping approach.
 
-# Use Case #2: Map a chemical reaction dataset using the Indigo atom-to-atom mapping approach.
 python scripts/map_reactions.py \
   --atom-to-atom-mapping-approach "indigo" \
+  --reaction_smiles "OCN1C(=O)Cc2ccccc12.c1nc2ccccc2[nH]1>>O=C1Cc2ccccc2N1Cn1cnc2ccccc12"
+```
+
+```shell
+# Map the chemical reactions from a .csv file using the RXNMapper atom-to-atom mapping approach.
+
+python scripts/map_reactions.py \
+  --atom-to-atom-mapping-approach "rxnmapper" \
   --input_csv_file_path "/path/to/the/input/file.csv" \
   --reaction_smiles_column_name "name_of_the_reaction_smiles_column" \
   --output_csv_file_path "/path/to/the/output/file.csv"
