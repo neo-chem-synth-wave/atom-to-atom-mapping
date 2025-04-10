@@ -28,29 +28,25 @@ conda env create -f environment.yaml
 conda activate atom-to-atom-mapping-env
 ```
 
-The [atom_to_atom_mapping](/atom_to_atom_mapping) package can be installed using the [pip](https://pip.pypa.io) command
-as follows:
-
-```shell
-# Assumption #1: The current directory is 'atom-to-atom-mapping'.
-
-pip install .
-
-# Note #1: The 'atom_to_atom_mapping.egg-info' directory created by the process can be safely removed.
-```
-
-
-### LocalMapper
-According to the issues [#4](https://github.com/snu-micc/LocalMapper/issues/4) and
-[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official
-[LocalMapper](https://github.com/snu-micc/LocalMapper) repository, there may be potential conflicts between libraries.
-The [appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be installed using the
+The [atom_to_atom_mapping](/atom_to_atom_mapping) package can be then locally installed using the
 [pip](https://pip.pypa.io) command as follows:
 
 ```shell
+pip install .
+```
+
+
+### LocalMapper Environment Troubleshooting
+According to the issues [#4](https://github.com/snu-micc/LocalMapper/issues/4) and
+[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official repository, potential conflicts between the
+[PyTorch](https://pytorch.org), [CUDA](https://developer.nvidia.com/cuda-toolkit), and [DGL](https://www.dgl.ai)
+libraries may arise. The [appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be
+re-installed using the [pip](https://pip.pypa.io) command as follows:
+
+```shell
+# Example #1: Re-install the DGL library assuming PyTorch and CUDA library versions 2.4 and 12.1, respectively.
 pip uninstall dgl
 
-# Example #1: This command installs the DGL library assuming the PyTorch and CUDA library versions 2.4 and 12.1, respectively.
 pip install dgl -f https://data.dgl.ai/wheels/torch-2.4/cu121/repo.html
 ```
 
