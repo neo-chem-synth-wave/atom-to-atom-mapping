@@ -46,7 +46,7 @@ def get_script_arguments() -> Namespace:
         "--input_csv_file_path",
         default=None,
         type=str,
-        help="The path of the input .csv file."
+        help="The path to the input .csv file."
     )
 
     argument_parser.add_argument(
@@ -62,7 +62,7 @@ def get_script_arguments() -> Namespace:
         "--output_csv_file_path",
         default=None,
         type=str,
-        help="The path of the output .csv file."
+        help="The path to the output .csv file."
     )
 
     argument_parser.add_argument(
@@ -78,7 +78,7 @@ def get_script_arguments() -> Namespace:
         "--batch_size",
         default=10,
         type=int,
-        help="The batch size, if relevant."
+        help="The size of the batch, if relevant."
     )
 
     return argument_parser.parse_args()
@@ -129,7 +129,7 @@ def map_reaction(
     Map a chemical reaction.
 
     :parameter reaction_smiles: The SMILES string of the chemical reaction.
-    :parameter atom_to_atom_mapping_function: The atom-to-atom-mapping function of the chemical reaction.
+    :parameter atom_to_atom_mapping_function: The atom-to-atom mapping function.
     """
 
     print({
@@ -150,22 +150,22 @@ def map_reactions(
     """
     Map the chemical reactions.
 
-    :parameter input_csv_file_path: The path of the input .csv file.
-    :parameter atom_to_atom_mapping_function: The atom-to-atom-mapping function of the chemical reactions.
+    :parameter input_csv_file_path: The path to the input .csv file.
+    :parameter atom_to_atom_mapping_function: The atom-to-atom mapping function.
     :parameter reaction_smiles_column_name: The name of the chemical reaction SMILES column in the input .csv file.
-    :parameter output_csv_file_path: The path of the output .csv file.
+    :parameter output_csv_file_path: The path to the output .csv file.
     """
 
-    input_csv_file_dataframe = read_csv(
+    input_dataframe = read_csv(
         filepath_or_buffer=input_csv_file_path
     )
 
     concat(
         objs=[
-            input_csv_file_dataframe,
+            input_dataframe,
             DataFrame(
                 data=atom_to_atom_mapping_function(
-                    input_csv_file_dataframe[reaction_smiles_column_name].values.tolist()
+                    input_dataframe[reaction_smiles_column_name].values.tolist()
                 )
             ),
         ],

@@ -68,7 +68,7 @@ class RXNMapperAtomToAtomMappingUtility:
         Map the chemical reactions.
 
         :parameter reaction_smiles_strings: The SMILES strings of the chemical reactions.
-        :parameter batch_size: The batch size.
+        :parameter batch_size: The size of the batch.
         :parameter logger: The logger. The value `None` indicates that the logger should not be utilized.
         :parameter kwargs: The keyword arguments for the adjustment of the following underlying methods:
             { `rxnmapper.core.RXNMapper.get_attention_guided_atom_maps` }.
@@ -91,7 +91,6 @@ class RXNMapperAtomToAtomMappingUtility:
                 total=ceil(len(reaction_smiles_strings) / batch_size),
                 ncols=len(tqdm_description) + 50
             ):
-                # noinspection PyBroadException
                 try:
                     rxnmapper_batch_outputs = rxnmapper.get_attention_guided_atom_maps(
                         rxns=list(reaction_smiles_strings[reaction_smiles_index: reaction_smiles_index + batch_size]),
