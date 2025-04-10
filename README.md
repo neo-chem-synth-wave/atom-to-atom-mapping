@@ -28,7 +28,21 @@ conda env create -f environment.yaml
 conda activate atom-to-atom-mapping-env
 ```
 
-The [atom_to_atom_mapping](/atom_to_atom_mapping) package can be then locally installed using the
+According to the issues [#4](https://github.com/snu-micc/LocalMapper/issues/4) and
+[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official repository, potential conflicts between the
+[PyTorch](https://pytorch.org), [CUDA](https://developer.nvidia.com/cuda-toolkit), and [DGL](https://www.dgl.ai)
+libraries may arise during the creation of the standalone environment. The
+[appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be re-installed using the
+[pip](https://pip.pypa.io) command as follows:
+
+```shell
+# Re-install the DGL library for PyTorch and CUDA library versions 2.4 and 12.1, respectively.
+pip uninstall dgl
+
+pip install dgl -f https://data.dgl.ai/wheels/torch-2.4/cu121/repo.html
+```
+
+The [atom_to_atom_mapping](/atom_to_atom_mapping) package can be subsequently installed using the
 [pip](https://pip.pypa.io) command as follows:
 
 ```shell
@@ -36,24 +50,9 @@ pip install .
 ```
 
 
-### LocalMapper Environment Troubleshooting
-According to the issues [#4](https://github.com/snu-micc/LocalMapper/issues/4) and
-[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official repository, potential conflicts between the
-[PyTorch](https://pytorch.org), [CUDA](https://developer.nvidia.com/cuda-toolkit), and [DGL](https://www.dgl.ai)
-libraries may arise. The [appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be
-re-installed using the [pip](https://pip.pypa.io) command as follows:
-
-```shell
-# Example #1: Re-install the DGL library assuming PyTorch and CUDA library versions 2.4 and 12.1, respectively.
-pip uninstall dgl
-
-pip install dgl -f https://data.dgl.ai/wheels/torch-2.4/cu121/repo.html
-```
-
-
 ## Utilization
-The purpose of the [scripts](/scripts) directory is to illustrate how to map chemical reactions using the following
-approaches:
+The purpose of the [scripts](/scripts) directory is to illustrate how to perform chemical reaction compound atom-to-atom
+mapping using the following approaches:
 
 1. [Indigo](https://github.com/epam/Indigo) <sup>[[1](https://lifescience.opensource.epam.com/indigo/index.html)]</sup>
 2. [RXNMapper](https://github.com/rxn4chemistry/rxnmapper) <sup>[[2](/references/2021/20210407_schwaller_p_et_al.md)]</sup>
@@ -64,31 +63,18 @@ approaches:
 The [map_reactions](/scripts/map_reactions.py) script can be utilized as follows:
 
 ```shell
-# Use Case #1: Map a chemical reaction SMILES string using the Indigo approach.
+# Use Case #1: Map a chemical reaction using the Indigo atom-to-atom mapping approach.
 python scripts/map_reactions.py \
   --atom-to-atom-mapping-approach "indigo" \
   --reaction_smiles "[O-][N+](=O)c1ccc(Br)cn1.CC(=O)Nc1ccc(O)cc1>>CC(=O)Nc1ccc(Oc2ccc(nc2)[N+]([O-])=O)cc1"
 
-# Use Case #2: Map a chemical reaction SMILES dataset using the Indigo approach.
+# Use Case #2: Map a chemical reaction dataset using the Indigo atom-to-atom mapping approach.
 python scripts/map_reactions.py \
   --atom-to-atom-mapping-approach "indigo" \
-  --input_csv_file_path "data/uspto_50k_by_20171116_coley_c_w_et_al/data_processed.csv" \
-  --reaction_smiles_column_name "rxn_smiles" \
-  --output_csv_file_path "data/data_processed_indigo.csv"
+  --input_csv_file_path "/path/to/the/input/file.csv" \
+  --reaction_smiles_column_name "name_of_the_reaction_smiles_column" \
+  --output_csv_file_path "/path/to/the/output/file.csv"
 ```
-
-<sup>**rxnmapper**</sup> Please keep in mind that the execution device of the model at the center of the approach is
-[determined automatically](https://github.com/rxn4chemistry/rxnmapper/blob/90a7012c9c0127f4a347baf815e270d8807b5a39/rxnmapper/core.py#L73C15-L73C83).
-Therefore, the [visibility of the devices](https://developer.nvidia.com/blog/cuda-pro-tip-control-gpu-visibility-cuda_visible_devices)
-and subsequent batch size should be adjusted before executing the scripts.
-
-<sup>**chytorch_rxnmap**</sup> Please keep in mind that the execution device of the model at the center of the approach
-is [set to the CPU by default](https://github.com/chython/chython/blob/70299a60f1eddb361abb6d89274c21b7cd430f43/chython/__init__.py#L29),
-and the number of utilized CPU cores is not easily controllable.
-
-<sup>**local_mapper**</sup> Please keep in mind that the execution device of the model at the center of the approach is
-[set to the CPU by default](https://github.com/chython/chython/blob/70299a60f1eddb361abb6d89274c21b7cd430f43/chython/__init__.py#L29),
-and the number of utilized CPU cores is not easily controllable.
 
 
 ## License Information
@@ -103,7 +89,7 @@ feedback, feel free to do so using [GitHub Issues](https://github.com/neo-chem-s
 
 ## References
 **[[1](https://lifescience.opensource.epam.com/indigo/index.html)]** **EPAM Indigo**:
-https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: April 9th, 2025.
+https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: April 10th, 2025.
 
 **[[2](/references/2021/20210407_schwaller_p_et_al.md)]** Schwaller, P., Hoover, B., Reymond, J., Strobelt, H., and
 Laino, T. **Extraction of Organic Chemistry Grammar from Unsupervised Learning of Chemical Reactions**. _Sci. Adv._, 7,
