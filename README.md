@@ -3,14 +3,15 @@
 [![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)](https://www.isct.ac.jp)
 [![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)](https://www.elix-inc.com)
 
-Welcome to the chemical reaction compound **atom-to-atom mapping** research project !!!
+Welcome to the chemical reaction compound **Atom-to-atom Mapping** research project !!!
 
 A chemical reaction can be defined as the transformation of a set of chemical compounds into another. Accompanied by
-energy change, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds.
-Therefore, correctly mapping this rearrangement of chemical compound atoms is essential for capturing the essence of the
-chemical reaction. This atom-to-atom mapping or atom mapping task has proven challenging as it is a generalization of
-the well-known subgraph isomorphism problem. Consequently, the main objective of this project is to systematically
-curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping research resources.
+energy change, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds, with
+or without the help of spectator compounds. Therefore, correctly mapping this rearrangement of chemical compound atoms
+is paramount for capturing the essence of the chemical reaction. This task, commonly referred to as atom-to-atom mapping
+or atom mapping, has proven challenging as it is a generalization of the well-known and NP-complete subgraph isomorphism
+problem. Consequently, the main objective of the **Atom-to-atom Mapping** research project is to systematically curate
+and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
 
 
 ## Installation
@@ -26,11 +27,31 @@ conda env create -f environment.yaml
 
 conda activate atom-to-atom-mapping-env
 ```
+
 The [atom_to_atom_mapping](/atom_to_atom_mapping) package can be installed using the [pip](https://pip.pypa.io) command
 as follows:
 
 ```shell
+# Assumption #1: The current directory is 'atom-to-atom-mapping'.
+
 pip install .
+
+# Note #1: The 'atom_to_atom_mapping.egg-info' directory created by the process can be safely removed.
+```
+
+
+### LocalMapper
+According to the issues [#4](https://github.com/snu-micc/LocalMapper/issues/4) and
+[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official
+[LocalMapper](https://github.com/snu-micc/LocalMapper) repository, there may be potential conflicts between libraries.
+The [appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be installed using the
+[pip](https://pip.pypa.io) command as follows:
+
+```shell
+pip uninstall dgl
+
+# Example #1: This command installs the DGL library assuming the PyTorch and CUDA library versions 2.4 and 12.1, respectively.
+pip install dgl -f https://data.dgl.ai/wheels/torch-2.4/cu121/repo.html
 ```
 
 
