@@ -29,9 +29,10 @@ conda activate atom-to-atom-mapping-env
 ```
 
 According to the issues [#4](https://github.com/snu-micc/LocalMapper/issues/4) and
-[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official repository, potential conflicts between the
+[#5](https://github.com/snu-micc/LocalMapper/issues/5) on the official
+[LocalMapper](https://github.com/snu-micc/LocalMapper) repository, potential conflicts between the
 [PyTorch](https://pytorch.org), [CUDA](https://developer.nvidia.com/cuda-toolkit), and [DGL](https://www.dgl.ai)
-libraries may arise during the creation of the standalone environment. The
+libraries may arise after the creation of the standalone environment. The
 [appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be re-installed using the
 [pip](https://pip.pypa.io) command as follows:
 
