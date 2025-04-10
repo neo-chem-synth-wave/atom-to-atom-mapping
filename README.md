@@ -67,7 +67,7 @@ The [map_reactions](/scripts/map_reactions.py) script can be utilized as follows
 # Map a chemical reaction using the Indigo atom-to-atom mapping approach.
 
 python scripts/map_reactions.py \
-  --atom-to-atom-mapping-approach "indigo" \
+  --atom_to_atom_mapping_approach "indigo" \
   --reaction_smiles "OCN1C(=O)Cc2ccccc12.c1nc2ccccc2[nH]1>>O=C1Cc2ccccc2N1Cn1cnc2ccccc12"
 ```
 
@@ -75,7 +75,7 @@ python scripts/map_reactions.py \
 # Map the chemical reactions from a .csv file using the RXNMapper atom-to-atom mapping approach.
 
 python scripts/map_reactions.py \
-  --atom-to-atom-mapping-approach "rxnmapper" \
+  --atom_to_atom_mapping_approach "rxnmapper" \
   --input_csv_file_path "/path/to/the/input/file.csv" \
   --reaction_smiles_column_name "name_of_the_reaction_smiles_column" \
   --output_csv_file_path "/path/to/the/output/file.csv"
