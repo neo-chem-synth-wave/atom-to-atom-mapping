@@ -1,17 +1,17 @@
 # Atom-to-atom Mapping
-[![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-2025.4.1-%23556DC8?logo=github&style=flat)](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/releases/tag/2024.7.2)
+[![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-2025.5.1-%23556DC8?logo=github&style=flat)](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/releases/tag/2025.5.1)
 [![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)](https://www.isct.ac.jp)
 [![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)](https://www.elix-inc.com)
 
-Welcome to the chemical reaction compound **Atom-to-atom Mapping** research project !!!
+Welcome to the chemical reaction compound **atom-to-atom mapping** research project !!!
 
 A chemical reaction can be defined as the transformation of a set of chemical compounds into another. Accompanied by
 energy change, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds, with
 or without the help of spectator compounds. Therefore, correctly mapping this rearrangement of chemical compound atoms
 is paramount for capturing the essence of the chemical reaction. This task, commonly referred to as atom-to-atom mapping
 or atom mapping, has proven challenging as it is a generalization of the well-known and NP-complete subgraph isomorphism
-problem. Consequently, the main objective of the **Atom-to-atom Mapping** research project is to systematically curate
-and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
+problem. Consequently, the primary objective of the **Atom-to-atom Mapping** research project is to systematically
+curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
 
 
 ## Installation
