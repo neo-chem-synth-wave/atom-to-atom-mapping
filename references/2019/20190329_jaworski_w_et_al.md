@@ -11,7 +11,7 @@ Kaźmierowski, Jan Rydzewski, Anna Gambin, Bartosz A. Grzybowski<br>
 # Abstract
 Mapping atoms across chemical reactions is important for substructure searches, automatic extraction of reaction rules,
 identification of metabolic pathways, and more. Unfortunately, the existing mapping algorithms can deal adequately only
-with relatively simple reactions but not those in which expert chemists would benefit from computer’s help. Here we
+with relatively simple reactions but not those in which expert chemists would benefit from computer's help. Here we
 report how a combination of algorithmics and expert chemical knowledge significantly improves the performance of atom
 mapping, allowing the machine to deal with even the most mechanistically complex chemical and biochemical
 transformations. The key feature of our approach is the use of few but judiciously chosen reaction templates that are
