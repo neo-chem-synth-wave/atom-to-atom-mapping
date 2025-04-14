@@ -8,6 +8,8 @@ from indigo.indigo.indigo import Indigo
 
 from pqdm.processes import pqdm
 
+from atom_to_atom_mapping.logging_.logging_ import staticmethod_with_logger
+
 
 class IndigoAtomToAtomMappingUtility:
     """
@@ -15,6 +17,7 @@ class IndigoAtomToAtomMappingUtility:
     """
 
     @staticmethod
+    @staticmethod_with_logger
     def map_reaction(
             reaction_smiles: str,
             timeout_period: int = 10000,

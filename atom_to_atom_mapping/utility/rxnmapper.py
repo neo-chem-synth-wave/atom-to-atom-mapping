@@ -48,6 +48,60 @@ class RXNMapperAtomToAtomMappingUtility:
         except Exception as exception_handle:
             if logger is not None:
                 logger.error(
+                    msg="The reaction SMILES string '{reaction_smiles:s}' could not be mapped successfully.".format(
+                        reaction_smiles=reaction_smiles
+                    )
+                )
+
+                logger.debug(
+                    msg=exception_handle,
+                    exc_info=True
+                )
+
+            return {
+                "mapped_reaction_smiles": None,
+                "confidence_score": None,
+            }
+
+    @staticmethod
+    def map_reaction_batch(
+            reaction_smiles_strings: Collection[str],
+            logger: Optional[Logger] = None,
+            **kwargs
+    ) -> Optional[Dict[str, Union[None, float, str]]]:
+        """
+        Map a batch of chemical reactions.
+
+        :parameter reaction_smiles_strings: The SMILES strings of the chemical reactions.
+        :parameter logger: The logger. The value `None` indicates that the logger should not be utilized.
+        :parameter kwargs: The keyword arguments for the adjustment of the following underlying methods:
+            { `rxnmapper.core.RXNMapper.get_attention_guided_atom_maps` }.
+
+        :returns: The mapped chemical reaction and confidence score.
+        """
+
+        try:
+            rxnmapper = RXNMapper()
+
+            rxnmapper_output = rxnmapper.get_attention_guided_atom_maps(
+                rxns=[reaction_smiles, ],
+                **kwargs
+            )
+
+            return {
+                "mapped_reaction_smiles": rxnmapper_output[0].get("mapped_rxn", None),
+                "confidence_score": rxnmapper_output[0].get("confidence", None),
+            }
+
+        except Exception as exception_handle:
+            if logger is not None:
+                logger.error(
+                    msg="The reaction SMILES string '{reaction_smiles:s}' could not be mapped successfully.".format(
+                        reaction_smiles=reaction_smiles
+                    )
+                )
+
+                logger.debug(
                     msg=exception_handle,
                     exc_info=True
                 )
