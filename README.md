@@ -47,14 +47,14 @@ mapping using the following approaches:
 The [map_reaction_smiles_strings](/scripts/map_reaction_smiles_strings.py) script can be utilized as follows:
 
 ```shell
-# Map a chemical reaction SMILES string using the Indigo approach.
+# Map a chemical reaction SMILES string.
 python scripts/map_reaction_smiles_strings.py \
   --atom_to_atom_mapping_approach "indigo" \
   --reaction_smiles "OCN1C(=O)Cc2ccccc12.c1nc2ccccc2[nH]1>>O=C1Cc2ccccc2N1Cn1cnc2ccccc12"
 ```
 
 ```shell
-# Map the chemical reaction SMILES strings from a '.csv' file using the RXNMapper approach.
+# Map the chemical reaction SMILES strings from a .csv file.
 python scripts/map_reaction_smiles_strings.py \
   --atom_to_atom_mapping_approach "rxnmapper" \
   --input_csv_file_path "/path/to/the/input/file.csv" \
