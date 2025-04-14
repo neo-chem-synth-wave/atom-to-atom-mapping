@@ -53,11 +53,11 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
                 value1=timeout_period_in_ms
             )
 
-            indigo_reaction = indigo.loadReactionSmarts(
+            reaction = indigo.loadReactionSmarts(
                 string=reaction_smiles
             )
 
-            indigo_status_code = indigo_reaction.automap(
+            status_code = reaction.automap(
                 mode="".join([
                     handle_existing_atom_map_numbers if handle_existing_atom_map_numbers in [
                         "alter",
@@ -74,17 +74,17 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
 
             return {
                 "mapped_reaction_smiles": (
-                    indigo_reaction.canonicalSmiles() if canonicalize_reaction_smiles else indigo_reaction.smiles()
+                    reaction.canonicalSmiles() if canonicalize_reaction_smiles else reaction.smiles()
                 ),
-                "status_code": indigo_status_code,
+                "status_code": status_code,
             }
 
         except Exception as exception_handle:
             if self.logger is not None:
                 self.logger.error(
                     msg=(
-                        "The mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has been "
-                        "unsuccessful."
+                        "The atom-to-atom mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has "
+                        "been unsuccessful."
                     ).format(
                         reaction_smiles=reaction_smiles
                     )
@@ -134,7 +134,10 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
 
         if self.logger is not None:
             self.logger.info(
-                msg="The mapping of the chemical reaction SMILES string using the Indigo approach has been started."
+                msg=(
+                    "The atom-to-atom mapping of the chemical reaction SMILES string using the Indigo approach has "
+                    "been started."
+                )
             )
 
         indigo_output = self._map_reaction_smiles(
@@ -150,7 +153,10 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
 
         if self.logger is not None:
             self.logger.info(
-                msg="The mapping of the chemical reaction SMILES string using the Indigo approach has been completed."
+                msg=(
+                    "The atom-to-atom mapping of the chemical reaction SMILES string using the Indigo approach has "
+                    "been completed."
+                )
             )
 
         return indigo_output
@@ -191,7 +197,10 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
 
         if self.logger is not None:
             self.logger.info(
-                msg="The mapping of the chemical reaction SMILES strings using the Indigo approach has been started."
+                msg=(
+                    "The atom-to-atom mapping of the chemical reaction SMILES strings using the Indigo approach has "
+                    "been started."
+                )
             )
 
         pqdm_description = (
@@ -220,7 +229,10 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
 
         if self.logger is not None:
             self.logger.info(
-                msg="The mapping of the chemical reaction SMILES strings using the Indigo approach has been completed."
+                msg=(
+                    "The atom-to-atom mapping of the chemical reaction SMILES strings using the Indigo approach has "
+                    "been completed."
+                )
             )
 
         return indigo_outputs

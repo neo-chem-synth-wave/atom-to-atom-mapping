@@ -56,8 +56,8 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
             if self.logger is not None:
                 self.logger.info(
                     msg=(
-                        "The mapping of the chemical reaction SMILES string using the LocalMapper approach has been "
-                        "started."
+                        "The atom-to-atom mapping of the chemical reaction SMILES string using the LocalMapper "
+                        "approach has been started."
                     )
                 )
 
@@ -70,8 +70,8 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
             if self.logger is not None:
                 self.logger.error(
                     msg=(
-                        "The mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has been "
-                        "unsuccessful."
+                        "The atom-to-atom mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has "
+                        "been unsuccessful."
                     ).format(
                         reaction_smiles=reaction_smiles
                     )
@@ -86,8 +86,8 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
             if self.logger is not None:
                 self.logger.info(
                     msg=(
-                        "The mapping of the chemical reaction SMILES string using the LocalMapper approach has been "
-                        "completed."
+                        "The atom-to-atom mapping of the chemical reaction SMILES string using the LocalMapper "
+                        "approach has been completed."
                     )
                 )
 
@@ -118,8 +118,8 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
             if self.logger is not None:
                 self.logger.info(
                     msg=(
-                        "The mapping of the chemical reaction SMILES strings using the LocalMapper approach has been "
-                        "started."
+                        "The atom-to-atom mapping of the chemical reaction SMILES strings using the LocalMapper "
+                        "approach has been started."
                     )
                 )
 
@@ -152,9 +152,9 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
                     if self.logger is not None:
                         self.logger.warning(
                             msg=(
-                                "The mapping of the chemical reaction SMILES string batch has been unsuccessful. "
-                                "Switching to the mapping of the individual chemical reaction SMILES strings of the "
-                                "batch."
+                                "The atom-to-atom mapping of the chemical reaction SMILES string batch has been "
+                                "unsuccessful. Switching to the atom-to-atom mapping of the individual chemical "
+                                "reaction SMILES strings of the batch."
                             )
                         )
 
@@ -182,8 +182,8 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
                             if self.logger is not None:
                                 self.logger.error(
                                     msg=(
-                                        "The mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has "
-                                        "been unsuccessful."
+                                        "The atom-to-atom mapping of the chemical reaction SMILES string "
+                                        "'{reaction_smiles:s}' has been unsuccessful."
                                     ).format(
                                         reaction_smiles=reaction_smiles
                                     )
@@ -203,8 +203,8 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
             if self.logger is not None:
                 self.logger.info(
                     msg=(
-                        "The mapping of the chemical reaction SMILES strings using the LocalMapper approach has been "
-                        "completed."
+                        "The atom-to-atom mapping of the chemical reaction SMILES strings using the LocalMapper "
+                        "approach has been completed."
                     )
                 )
 
@@ -213,7 +213,7 @@ class LocalMapperAtomToAtomMapping(AtomToAtomMappingBase):
         except Exception as exception_handle:
             if self.logger is not None:
                 self.logger.error(
-                    msg="The mapping of the chemical reaction SMILES strings has been unsuccessful."
+                    msg="The atom-to-atom mapping of the chemical reaction SMILES strings has been unsuccessful."
                 )
 
                 self.logger.debug(

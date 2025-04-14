@@ -1,4 +1,4 @@
-""" The ``scripts`` directory ``map_reactions`` script. """
+""" The ``scripts`` directory ``map_reaction_smiles_strings`` script. """
 
 from argparse import ArgumentParser, Namespace
 from functools import partial
@@ -121,12 +121,12 @@ def get_script_logger() -> Logger:
     return logger
 
 
-def map_reaction(
+def map_reaction_smiles(
         reaction_smiles: str,
         atom_to_atom_mapping_function: Callable[[str], Optional[Dict[str, Any]]]
 ) -> None:
     """
-    Map a chemical reaction.
+    Map a chemical reaction SMILES string.
 
     :parameter reaction_smiles: The SMILES string of the chemical reaction.
     :parameter atom_to_atom_mapping_function: The atom-to-atom mapping function.
@@ -137,14 +137,14 @@ def map_reaction(
     ))
 
 
-def map_reactions(
+def map_reaction_smiles_strings(
         input_csv_file_path: str,
         atom_to_atom_mapping_function: Callable[[Sequence[str]], Optional[List[Optional[Dict[str, Any]]]]],
         reaction_smiles_column_name: str,
         output_csv_file_path: str
 ) -> None:
     """
-    Map the chemical reactions.
+    Map the chemical reaction SMILES strings.
 
     :parameter input_csv_file_path: The path to the input .csv file.
     :parameter atom_to_atom_mapping_function: The atom-to-atom mapping function.
@@ -185,7 +185,7 @@ if __name__ == "__main__":
         )
 
         if script_arguments.reaction_smiles is not None:
-            map_reaction(
+            map_reaction_smiles(
                 reaction_smiles=script_arguments.reaction_smiles,
                 atom_to_atom_mapping_function=chytorch_rxnmap.map_reaction_smiles
             )
@@ -195,7 +195,7 @@ if __name__ == "__main__":
             script_arguments.reaction_smiles_column_name is not None and
             script_arguments.output_csv_file_path is not None
         ):
-            map_reactions(
+            map_reaction_smiles_strings(
                 input_csv_file_path=script_arguments.input_csv_file_path,
                 atom_to_atom_mapping_function=chytorch_rxnmap.map_reaction_smiles_strings,
                 reaction_smiles_column_name=script_arguments.reaction_smiles_column_name,
@@ -210,7 +210,7 @@ if __name__ == "__main__":
         )
 
         if script_arguments.reaction_smiles is not None:
-            map_reaction(
+            map_reaction_smiles(
                 reaction_smiles=script_arguments.reaction_smiles,
                 atom_to_atom_mapping_function=indigo.map_reaction_smiles
             )
@@ -220,7 +220,7 @@ if __name__ == "__main__":
             script_arguments.reaction_smiles_column_name is not None and
             script_arguments.output_csv_file_path is not None
         ):
-            map_reactions(
+            map_reaction_smiles_strings(
                 input_csv_file_path=script_arguments.input_csv_file_path,
                 atom_to_atom_mapping_function=partial(
                     indigo.map_reaction_smiles_strings,
@@ -238,7 +238,7 @@ if __name__ == "__main__":
         )
 
         if script_arguments.reaction_smiles is not None:
-            map_reaction(
+            map_reaction_smiles(
                 reaction_smiles=script_arguments.reaction_smiles,
                 atom_to_atom_mapping_function=local_mapper.map_reaction_smiles
             )
@@ -248,7 +248,7 @@ if __name__ == "__main__":
             script_arguments.reaction_smiles_column_name is not None and
             script_arguments.output_csv_file_path is not None
         ):
-            map_reactions(
+            map_reaction_smiles_strings(
                 input_csv_file_path=script_arguments.input_csv_file_path,
                 atom_to_atom_mapping_function=partial(
                     local_mapper.map_reaction_smiles_strings,
@@ -266,7 +266,7 @@ if __name__ == "__main__":
         )
 
         if script_arguments.reaction_smiles is not None:
-            map_reaction(
+            map_reaction_smiles(
                 reaction_smiles=script_arguments.reaction_smiles,
                 atom_to_atom_mapping_function=rxnmapper.map_reaction_smiles
             )
@@ -276,7 +276,7 @@ if __name__ == "__main__":
             script_arguments.reaction_smiles_column_name is not None and
             script_arguments.output_csv_file_path is not None
         ):
-            map_reactions(
+            map_reaction_smiles_strings(
                 input_csv_file_path=script_arguments.input_csv_file_path,
                 atom_to_atom_mapping_function=partial(
                     rxnmapper.map_reaction_smiles_strings,
@@ -287,8 +287,8 @@ if __name__ == "__main__":
             )
 
     else:
-        raise ValueError(
-            "The atom-to-atom mapping approach '{atom_to_atom_mapping_approach:s}' is not supported.".format(
+        script_logger.error(
+            msg="The atom-to-atom mapping approach '{atom_to_atom_mapping_approach:s}' is not supported.".format(
                 atom_to_atom_mapping_approach=script_arguments.atom_to_atom_mapping_approach
             )
         )

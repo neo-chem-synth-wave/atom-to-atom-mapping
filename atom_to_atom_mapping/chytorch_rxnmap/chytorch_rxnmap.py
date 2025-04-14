@@ -59,8 +59,8 @@ class ChytorchRxnMapAtomToAtomMapping(AtomToAtomMappingBase):
             if self.logger is not None:
                 self.logger.error(
                     msg=(
-                        "The mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has been "
-                        "unsuccessful."
+                        "The atom-to-atom mapping of the chemical reaction SMILES string '{reaction_smiles:s}' has "
+                        "been unsuccessful."
                     ).format(
                         reaction_smiles=reaction_smiles
                     )
@@ -94,8 +94,8 @@ class ChytorchRxnMapAtomToAtomMapping(AtomToAtomMappingBase):
         if self.logger is not None:
             self.logger.info(
                 msg=(
-                    "The mapping of the chemical reaction SMILES string using the Chytorch RxnMap approach has been "
-                    "started."
+                    "The atom-to-atom mapping of the chemical reaction SMILES string using the Chytorch RxnMap "
+                    "approach has been started."
                 )
             )
 
@@ -107,8 +107,8 @@ class ChytorchRxnMapAtomToAtomMapping(AtomToAtomMappingBase):
         if self.logger is not None:
             self.logger.info(
                 msg=(
-                    "The mapping of the chemical reaction SMILES string using the Chytorch RxnMap approach has been "
-                    "completed."
+                    "The atom-to-atom mapping of the chemical reaction SMILES string using the Chytorch RxnMap "
+                    "approach has been completed."
                 )
             )
 
@@ -132,8 +132,8 @@ class ChytorchRxnMapAtomToAtomMapping(AtomToAtomMappingBase):
         if self.logger is not None:
             self.logger.info(
                 msg=(
-                    "The mapping of the chemical reaction SMILES strings using the Chytorch RxnMap approach has been "
-                    "started."
+                    "The atom-to-atom mapping of the chemical reaction SMILES strings using the Chytorch RxnMap "
+                    "approach has been started."
                 )
             )
 
@@ -157,8 +157,8 @@ class ChytorchRxnMapAtomToAtomMapping(AtomToAtomMappingBase):
         if self.logger is not None:
             self.logger.info(
                 msg=(
-                    "The mapping of the chemical reaction SMILES strings using the Chytorch RxnMap approach has been "
-                    "completed."
+                    "The atom-to-atom mapping of the chemical reaction SMILES strings using the Chytorch RxnMap "
+                    "approach has been completed."
                 )
             )
 
