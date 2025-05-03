@@ -1,5 +1,5 @@
 # Atom-to-atom Mapping
-[![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-2025.5.1-%23556DC8?logo=github&style=flat)](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/releases/tag/2025.5.1)
+[![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-2025.5.2-%23556DC8?logo=github&style=flat)](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/releases/tag/2025.5.2)
 [![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)](https://www.isct.ac.jp)
 [![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)](https://www.elix-inc.com)
 
@@ -12,6 +12,8 @@ compound atoms is paramount for capturing the essence of the chemical reaction. 
 atom-to-atom mapping or atom mapping, has proven challenging as it is a generalization of the well-known subgraph
 isomorphism problem. Consequently, the primary objective of the **Atom-to-atom Mapping** research project is to
 systematically curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
+
+![atom_to_atom_mapping_example.png](figures/atom_to_atom_mapping_example.png)
 
 
 ## Installation
@@ -75,7 +77,7 @@ feedback, feel free to do so using [GitHub Issues](https://github.com/neo-chem-s
 
 ## References
 **[[1](https://lifescience.opensource.epam.com/indigo/index.html)]** **EPAM Indigo**:
-https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: May 1st, 2025.
+https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: 2025/05/03.
 
 **[[2](/references/2021/20210407_schwaller_p_et_al.md)]** Schwaller, P., Hoover, B., Reymond, J., Strobelt, H., and
 Laino, T. **Extraction of Organic Chemistry Grammar from Unsupervised Learning of Chemical Reactions**. _Sci. Adv._, 7,
