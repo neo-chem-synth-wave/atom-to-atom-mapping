@@ -7,11 +7,11 @@ Welcome to the chemical reaction compound **atom-to-atom mapping** research proj
 
 A chemical reaction can be defined as the transformation of a set of chemical compounds into another. Accompanied by a
 change in energy, the atoms of the reactant chemical compounds are rearranged to form the product chemical compounds,
-with or without the assistance of spectator compounds. Therefore, correctly mapping the rearrangement of chemical
-compound atoms is paramount for capturing the essence of the chemical reaction. This task, commonly referred to as
-atom-to-atom mapping or atom mapping, has proven challenging as it is a generalization of the well-known subgraph
-isomorphism problem. Consequently, the primary objective of the **Atom-to-atom Mapping** research project is to
-systematically curate and facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
+with or without the assistance of spectator compounds. Correctly mapping this rearrangement of chemical compound atoms
+is paramount for capturing the essence of the chemical reaction. This task, commonly referred to as atom-to-atom mapping
+or atom mapping, has proven challenging as it is a generalization of the well-known subgraph isomorphism problem.
+Consequently, the primary objective of the **Atom-to-atom Mapping** research project is to systematically curate and
+facilitate access to relevant chemical reaction compound atom-to-atom mapping resources.
 
 ![atom_to_atom_mapping_example.png](figures/atom_to_atom_mapping_example.png)
 
@@ -37,6 +37,23 @@ pip install .
 ```
 
 
+### LocalMapper Environment Troubleshooting
+According to [GitHub Issue 4](https://github.com/snu-micc/LocalMapper/issues/4) and
+[GitHub Issue 5](https://github.com/snu-micc/LocalMapper/issues/5) on the official
+[LocalMapper](https://github.com/snu-micc/LocalMapper) repository, potential conflicts between the
+[PyTorch](https://pytorch.org), [CUDA](https://developer.nvidia.com/cuda-toolkit), and [DGL](https://www.dgl.ai)
+libraries may arise. To resolve the conflicts, the
+[appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be re-installed as follows:
+
+```shell
+# Re-install the DGL library for PyTorch and CUDA library versions 2.4 and 12.1, respectively.
+
+pip uninstall dgl
+
+pip install dgl -f https://data.dgl.ai/wheels/torch-2.4/cu121/repo.html 
+```
+
+
 ## Utilization
 The purpose of the [scripts](/scripts) directory is to illustrate how to map chemical reaction compounds using the
 following approaches:
@@ -50,6 +67,7 @@ The [map_reaction_smiles_strings](/scripts/map_reaction_smiles_strings.py) scrip
 
 ```shell
 # Map a chemical reaction SMILES string.
+
 python scripts/map_reaction_smiles_strings.py \
   --atom_to_atom_mapping_approach "indigo" \
   --reaction_smiles "OCN1C(=O)Cc2ccccc12.c1nc2ccccc2[nH]1>>O=C1Cc2ccccc2N1Cn1cnc2ccccc12"
@@ -57,6 +75,7 @@ python scripts/map_reaction_smiles_strings.py \
 
 ```shell
 # Map the chemical reaction SMILES strings from a .csv file.
+
 python scripts/map_reaction_smiles_strings.py \
   --atom_to_atom_mapping_approach "rxnmapper" \
   --input_csv_file_path "/path/to/the/input/file.csv" \
@@ -73,6 +92,11 @@ for more details regarding the license information of external resources utilize
 ## Contact
 If you are interested in contributing to this repository by reporting bugs, suggesting improvements, or submitting
 feedback, feel free to do so using [GitHub Issues](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/issues).
+
+
+## Acknowledgements
+Marvin was used for drawing, displaying and characterizing chemical structures, substructures and reactions. Marvin
+24.3.1, 2025, ChemAxon (http://www.chemaxon.com).
 
 
 ## References
