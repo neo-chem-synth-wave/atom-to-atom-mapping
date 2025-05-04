@@ -37,16 +37,16 @@ pip install .
 ```
 
 
-### LocalMapper Environment Troubleshooting
+### Environment Troubleshooting
 According to [GitHub Issue 4](https://github.com/snu-micc/LocalMapper/issues/4) and
-[GitHub Issue 5](https://github.com/snu-micc/LocalMapper/issues/5) on the official
+[GitHub Issue 5](https://github.com/snu-micc/LocalMapper/issues/5) on the
 [LocalMapper](https://github.com/snu-micc/LocalMapper) repository, potential conflicts between the
 [PyTorch](https://pytorch.org), [CUDA](https://developer.nvidia.com/cuda-toolkit), and [DGL](https://www.dgl.ai)
 libraries may arise. To resolve the conflicts, the
 [appropriate version of the DGL library](https://www.dgl.ai/pages/start.html) can be re-installed as follows:
 
 ```shell
-# Re-install the DGL library for PyTorch and CUDA library versions 2.4 and 12.1, respectively.
+# Re-install the DGL library for the PyTorch and CUDA library versions 2.4 and 12.1, respectively.
 
 pip uninstall dgl
 
@@ -85,23 +85,23 @@ python scripts/map_reaction_smiles_strings.py \
 
 
 ## License Information
-The contents of this repository are published under the [MIT](/LICENSE) license. Please refer to individual references
-for more details regarding the license information of external resources utilized within the repository.
+The contents of this repository are published under the [MIT](/LICENSE) license. Please refer to the individual
+references for more details regarding the license information of external resources utilized within the repository.
 
 
 ## Contact
-If you are interested in contributing to this repository by reporting bugs, suggesting improvements, or submitting
+If you are interested in contributing to this research project by reporting bugs, suggesting improvements, or submitting
 feedback, feel free to do so using [GitHub Issues](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/issues).
 
 
 ## Acknowledgements
-Marvin was used for drawing, displaying and characterizing chemical structures, substructures and reactions. Marvin
-24.3.1, 2025, ChemAxon (http://www.chemaxon.com).
+Marvin was used for drawing, displaying and characterizing chemical structures, substructures and reactions.
+<sup>[[5](#references)]</sup>
 
 
 ## References
 **[[1](https://lifescience.opensource.epam.com/indigo/index.html)]** **EPAM Indigo**:
-https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: 2025/05/03.
+https://lifescience.opensource.epam.com/indigo/index.html. Accessed on: 2025/05/04.
 
 **[[2](/references/2021/20210407_schwaller_p_et_al.md)]** Schwaller, P., Hoover, B., Reymond, J., Strobelt, H., and
 Laino, T. **Extraction of Organic Chemistry Grammar from Unsupervised Learning of Chemical Reactions**. _Sci. Adv._, 7,
@@ -113,3 +113,5 @@ _J. Chem. Inf. Model._, 2022, 62, 14, 3307–3315.
 
 **[[4](/references/2024/20240313_chen_s_et_al.md)]** Chen, S., An, S., Babazade, R., and Jung, Y. **Precise Atom-to-atom
 Mapping for Organic Reactions via Human-in-the-loop Machine Learning**.  _Nat. Commun._, 15, 2250, 2024.
+
+**[[5](https://chemaxon.com)]** **Marvin 24.3.1, 2025, ChemAxon**: https://chemaxon.com. Accessed on: 2025/05/04.
