@@ -3,7 +3,7 @@
 from functools import partial
 from typing import Dict, List, Optional, Sequence, Union
 
-from indigo.indigo.indigo import Indigo
+from indigo import Indigo
 
 from pqdm.processes import pqdm
 
@@ -46,14 +46,14 @@ class IndigoAtomToAtomMapping(AtomToAtomMappingBase):
         """
 
         try:
-            indigo = Indigo()
+            indigo_ = Indigo()
 
-            indigo.setOption(
+            indigo_.setOption(
                 option="aam-timeout",
                 value1=timeout_period_in_ms
             )
 
-            reaction = indigo.loadReactionSmarts(
+            reaction = indigo_.loadReactionSmarts(
                 string=reaction_smiles
             )
 

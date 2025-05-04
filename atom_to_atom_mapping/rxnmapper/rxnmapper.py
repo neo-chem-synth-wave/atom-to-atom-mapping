@@ -4,7 +4,7 @@ from logging import Logger
 from math import ceil
 from typing import Dict, List, Optional, Sequence, Union
 
-from rxnmapper.core import RXNMapper
+from rxnmapper import RXNMapper
 
 from tqdm.auto import tqdm
 

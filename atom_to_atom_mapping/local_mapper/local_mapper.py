@@ -4,7 +4,7 @@ from logging import Logger
 from math import ceil
 from typing import Dict, List, Optional, Sequence, Union
 
-from localmapper.localmapper import localmapper
+from localmapper import localmapper
 
 from tqdm.auto import tqdm
 

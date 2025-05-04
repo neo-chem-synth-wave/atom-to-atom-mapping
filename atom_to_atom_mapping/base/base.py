@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from logging import Logger
-from typing import Optional
+from typing import Any, Dict, List, Optional, Sequence
 
 
 class AtomToAtomMappingBase(ABC):
@@ -30,7 +30,7 @@ class AtomToAtomMappingBase(ABC):
         :returns: The value of the logger.
         """
 
-        return self.__logger
+        return self._logger
 
     @logger.setter
     def logger(
@@ -43,18 +43,30 @@ class AtomToAtomMappingBase(ABC):
         :parameter value: The value of the logger.
         """
 
-        self.__logger = value
+        self._logger = value
 
     @abstractmethod
     def map_reaction_smiles(
             self,
-            **kwargs
-    ) -> None:
-        """ Map a chemical reaction SMILES string. """
+            reaction_smiles: str
+    ) -> Dict[str, Any]:
+        """
+        Map a chemical reaction SMILES string.
+
+        :parameter reaction_smiles: The SMILES string of the chemical reaction.
+
+        :returns: The mapped chemical reaction SMILES string.
+        """
 
     @abstractmethod
     def map_reaction_smiles_strings(
             self,
-            **kwargs
-    ) -> None:
-        """ Map the chemical reaction SMILES strings. """
+            reaction_smiles_strings: Sequence[str]
+    ) -> List[Dict[str, Any]]:
+        """
+        Map the chemical reaction SMILES strings.
+
+        :parameter reaction_smiles_strings: The SMILES strings of the chemical reactions.
+
+        :returns: The mapped chemical reaction SMILES strings.
+        """

@@ -2,7 +2,7 @@
 
 from typing import Dict, List, Optional, Sequence, Union
 
-from chython.files.daylight.smiles import smiles
+from chython import smiles
 
 from tqdm.auto import tqdm
 
@@ -33,21 +33,21 @@ class ChytorchRxnMapAtomToAtomMapping(AtomToAtomMappingBase):
         try:
             reaction = smiles(
                 reaction_smiles,
-                ignore=kwargs.pop("ignore", True),
-                remap=kwargs.pop("remap", False),
-                ignore_stereo=kwargs.pop("ignore_stereo", False),
-                ignore_bad_isotopes=kwargs.pop("ignore_bad_isotopes", False),
-                keep_implicit=kwargs.pop("keep_implicit", False),
-                ignore_carbon_radicals=kwargs.pop("ignore_carbon_radicals", False),
-                ignore_aromatic_radicals=kwargs.pop("ignore_aromatic_radicals", True)
+                ignore=kwargs.get("ignore", True),
+                remap=kwargs.get("remap", False),
+                ignore_stereo=kwargs.get("ignore_stereo", False),
+                ignore_bad_isotopes=kwargs.get("ignore_bad_isotopes", False),
+                keep_implicit=kwargs.get("keep_implicit", False),
+                ignore_carbon_radicals=kwargs.get("ignore_carbon_radicals", False),
+                ignore_aromatic_radicals=kwargs.get("ignore_aromatic_radicals", True)
             )
 
             kwargs.pop("return_score", None)
 
             confidence_score = reaction.reset_mapping(
                 return_score=True,
-                multiplier=kwargs.pop("multiplier", 1.75),
-                keep_reactants_numbering=kwargs.pop("keep_reactants_numbering", False)
+                multiplier=kwargs.get("multiplier", 1.75),
+                keep_reactants_numbering=kwargs.get("keep_reactants_numbering", False)
             )
 
             return {
