@@ -114,4 +114,4 @@ _J. Chem. Inf. Model._, 2022, 62, 14, 3307–3315.
 **[[4](/references/2024/20240313_chen_s_et_al.md)]** Chen, S., An, S., Babazade, R., and Jung, Y. **Precise Atom-to-atom
 Mapping for Organic Reactions via Human-in-the-loop Machine Learning**.  _Nat. Commun._, 15, 2250, 2024.
 
-**[[5](https://chemaxon.com)]** **Marvin 24.3.1, 2025, ChemAxon**: https://chemaxon.com. Accessed on: 2025/05/04.
+**[[5](https://chemaxon.com)]** **Marvin 24.3.1, 2024, ChemAxon**: https://chemaxon.com. Accessed on: 2025/05/04.
