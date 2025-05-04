@@ -1,13 +1,9 @@
 # Overview
-**Title:** Automatic Mapping of Atoms Across Both Simple and Complex Chemical Reactions
-
+**Title:** Automatic Mapping of Atoms Across Both Simple and Complex Chemical Reactions<br>
 **Authors:** Wojciech Jaworski, Sara Szymkuć, Barbara Mikulak-Klucznik, Krzysztof Piecuch, Tomasz Klucznik, Michał
-Kaźmierowski, Jan Rydzewski, Anna Gambin, Bartosz A. Grzybowski
-
-**Publication Date:** 2019/03/29
-
-**Publication Link:** [Nature Communications](https://www.nature.com/articles/s41467-019-09440-2)
-
+Kaźmierowski, Jan Rydzewski, Anna Gambin, Bartosz A. Grzybowski<br>
+**Publication Date:** 2019/03/29<br>
+**Publication Link:** [Nature Communications](https://www.nature.com/articles/s41467-019-09440-2)<br>
 **Alternative Publication Links:** [ResearchGate](https://www.researchgate.net/publication/332078188_Automatic_mapping_of_atoms_across_both_simple_and_complex_chemical_reactions)
 | [ScholarWorks@UNIST](https://scholarworks.unist.ac.kr/handle/201301/26640)
 
