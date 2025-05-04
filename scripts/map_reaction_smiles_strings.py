@@ -5,9 +5,7 @@ from functools import partial
 from logging import Formatter, Logger, StreamHandler, getLogger
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
-from pandas.core.frame import DataFrame
-from pandas.core.reshape.concat import concat
-from pandas.io.parsers.readers import read_csv
+from pandas import DataFrame, concat, read_csv
 
 
 def get_script_arguments() -> Namespace:
@@ -22,7 +20,6 @@ def get_script_arguments() -> Namespace:
     argument_parser.add_argument(
         "-atama",
         "--atom_to_atom_mapping_approach",
-        default="indigo",
         type=str,
         choices=[
             "chytorch_rxnmap",
@@ -30,6 +27,7 @@ def get_script_arguments() -> Namespace:
             "local_mapper",
             "rxnmapper",
         ],
+        required=True,
         help="The indicator of the atom-to-atom mapping approach."
     )
 
@@ -123,7 +121,7 @@ def get_script_logger() -> Logger:
 
 def map_reaction_smiles(
         reaction_smiles: str,
-        atom_to_atom_mapping_function: Callable[[str], Optional[Dict[str, Any]]]
+        atom_to_atom_mapping_function: Callable[[str], Dict[str, Any]]
 ) -> None:
     """
     Map a chemical reaction SMILES string.
@@ -132,14 +130,12 @@ def map_reaction_smiles(
     :parameter atom_to_atom_mapping_function: The atom-to-atom mapping function.
     """
 
-    print(atom_to_atom_mapping_function(
-        reaction_smiles
-    ))
+    print(atom_to_atom_mapping_function(reaction_smiles))
 
 
 def map_reaction_smiles_strings(
         input_csv_file_path: str,
-        atom_to_atom_mapping_function: Callable[[Sequence[str]], Optional[List[Optional[Dict[str, Any]]]]],
+        atom_to_atom_mapping_function: Callable[[Sequence[str]], Optional[List[Dict[str, Any]]]],
         reaction_smiles_column_name: str,
         output_csv_file_path: str
 ) -> None:
@@ -153,7 +149,8 @@ def map_reaction_smiles_strings(
     """
 
     input_dataframe = read_csv(
-        filepath_or_buffer=input_csv_file_path
+        filepath_or_buffer=input_csv_file_path,
+        low_memory=False
     )
 
     concat(
