@@ -130,7 +130,9 @@ def map_reaction_smiles(
     :parameter atom_to_atom_mapping_function: The atom-to-atom mapping function.
     """
 
-    print(atom_to_atom_mapping_function(reaction_smiles))
+    print(atom_to_atom_mapping_function(
+        reaction_smiles
+    ))
 
 
 def map_reaction_smiles_strings(
