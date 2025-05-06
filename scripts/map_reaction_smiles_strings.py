@@ -20,6 +20,7 @@ def get_script_arguments() -> Namespace:
     argument_parser.add_argument(
         "-atama",
         "--atom_to_atom_mapping_approach",
+        default="indigo",
         type=str,
         choices=[
             "chytorch_rxnmap",
@@ -27,8 +28,7 @@ def get_script_arguments() -> Namespace:
             "local_mapper",
             "rxnmapper",
         ],
-        required=True,
-        help="The indicator of the atom-to-atom mapping approach."
+        help="The atom-to-atom mapping approach."
     )
 
     argument_parser.add_argument(

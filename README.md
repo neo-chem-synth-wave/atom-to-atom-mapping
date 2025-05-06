@@ -1,5 +1,5 @@
 # Atom-to-atom Mapping
-[![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-2025.5.2-%23556DC8?logo=github&style=flat)](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/releases/tag/2025.5.2)
+[![Static Badge](https://img.shields.io/badge/atom__to__atom__mapping-2025.5.1-%23556DC8?logo=github&style=flat)](https://github.com/neo-chem-synth-wave/atom-to-atom-mapping/releases/tag/2025.5.1)
 [![Static Badge](https://img.shields.io/badge/Institute%20of%20Science%20Tokyo-%231C3177?style=flat)](https://www.isct.ac.jp)
 [![Static Badge](https://img.shields.io/badge/Elix%2C%20Inc.-%235EB6B3?style=flat)](https://www.elix-inc.com)
 
