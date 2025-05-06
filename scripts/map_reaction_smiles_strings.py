@@ -74,7 +74,7 @@ def get_script_arguments() -> Namespace:
     argument_parser.add_argument(
         "-bs",
         "--batch_size",
-        default=10,
+        default=32,
         type=int,
         help="The size of the batch, if relevant."
     )
